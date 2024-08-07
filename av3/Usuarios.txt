@@ -1,0 +1,36 @@
+CREATE TABLE Usuarios ( 
+    CPF int NOT NULL PRIMARY KEY,  
+    Nome varchar(255),  
+    Rua varchar(255),  
+    Numero varchar(255),  
+    Complemento varchar(255),  
+    Bairro varchar(255),  
+    Cidade varchar(255),  
+    Estado varchar(255),  
+    Pais varchar(255),  
+    Cep int 
+);
+-- Dado de exemplo
+INSERT INTO Usuarios (CPF, Nome, Rua, Numero, Complemento, Bairro, Cidade, Estado, Pais, Cep) VALUES (11122233344, 'Teste Usuario 1', 'Rua de teste', 'Numero 1337', 'Complemento', 'Bairro Novo', 'Olinda', 'PE', 'Brasil', 13371889);
+-- Dados para testar Telefone
+INSERT INTO Usuarios (CPF, Nome) VALUES (123456789, 'Teste Telefone 1');
+INSERT INTO Usuarios (CPF, Nome) VALUES (987654321, 'Teste Telefone 2');
+INSERT INTO Usuarios (CPF, Nome) VALUES (111222333, 'Teste Telefone 3');
+-- Dados para testar funcionarios e Hospedes
+INSERT INTO Usuarios (CPF, Nome, Rua, Numero, Complemento, Bairro, Cidade, Estado, Pais, Cep)
+VALUES (111111111, 'João Silva', 'Rua A', '123', 'Apto 1', 'Bairro A', 'Cidade A', 'Estado A', 'Pais A', 12345678);
+
+INSERT INTO Usuarios (CPF, Nome, Rua, Numero, Complemento, Bairro, Cidade, Estado, Pais, Cep)
+VALUES (222222222, 'Maria Souza', 'Rua B', '456', 'Apto 2', 'Bairro B', 'Cidade B', 'Estado B', 'Pais B', 23456789);
+
+INSERT INTO Usuarios (CPF, Nome, Rua, Numero, Complemento, Bairro, Cidade, Estado, Pais, Cep)
+VALUES (333333333, 'Pedro Oliveira', 'Rua C', '789', 'Apto 3', 'Bairro C', 'Cidade C', 'Estado C', 'Pais C', 34567890);
+
+INSERT INTO Usuarios (CPF, Nome, Rua, Numero, Complemento, Bairro, Cidade, Estado, Pais, Cep)
+VALUES (444444444, 'Ana Costa', 'Rua D', '101', 'Apto 4', 'Bairro D', 'Cidade D', 'Estado D', 'Pais D', 45678901);
+
+INSERT INTO Usuarios (CPF, Nome, Rua, Numero, Complemento, Bairro, Cidade, Estado, Pais, Cep)
+VALUES (555555555, 'Carlos Lima', 'Rua E', '102', 'Apto 5', 'Bairro E', 'Cidade E', 'Estado E', 'Pais E', 56789012);
+
+-- Consultando os dados
+SELECT * FROM Usuarios;

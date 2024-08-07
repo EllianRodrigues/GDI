@@ -1,0 +1,15 @@
+CREATE TABLE Cargos (
+    Cargo_fun VARCHAR(255) PRIMARY KEY,
+    Salario NUMERIC(10, 2)
+);
+
+INSERT INTO Cargos (Cargo_fun, Salario)
+VALUES ('Gerente', 5000.00);
+
+INSERT INTO Cargos (Cargo_fun, Salario)
+VALUES ('Assistente', 3000.00);
+
+INSERT INTO Cargos (Cargo_fun, Salario)
+VALUES ('Analista', 4000.00);
+
+SELECT * FROM Cargos;

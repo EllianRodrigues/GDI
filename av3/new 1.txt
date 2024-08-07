@@ -1,0 +1,23 @@
+Servico_hospede
+
+CREATE TABLE Reserva (
+    Reserva_id INT PRIMARY KEY,
+    CPF_h INT,
+    Numero_quarto INT,
+    Check_in DATE,
+    Check_out DATE,
+    Status TEXT,
+    Informacoes_pagamento TEXT,
+    Numero_hospedes INT,
+    FOREIGN KEY (CPF_h) REFERENCES Hospedes(CPF_p),
+    FOREIGN KEY (Numero_quarto) REFERENCES Quarto(Numero_quarto)
+);
+
+INSERT INTO Servico_hospede (Servico_id, Descricao, Preco)
+VALUES (1, 'Serviço de Quarto', 50.00);
+
+INSERT INTO Servico_hospede (Servico_id, Descricao, Preco)
+VALUES (2, 'Lavanderia', 30.00);
+
+INSERT INTO Servico_hospede (Servico_id, Descricao, Preco)
+VALUES (3, 'SPA', 100.00);

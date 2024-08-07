@@ -1,0 +1,21 @@
+CREATE TABLE Tipos_quarto (
+    Nome_tipo varchar(255) PRIMARY KEY,
+    Area INT,
+    Qtd_camas INT,
+    Qtd_TVs INT,
+    Qtd_arCondicionados INT,
+    Qtd_comodos INT,
+    Qtd_banheiros INT,
+    Preco NUMERIC(10, 2)
+);
+
+INSERT INTO Tipos_quarto (Nome_tipo, Area, Qtd_camas, Qtd_TVs, Qtd_arCondicionados, Qtd_comodos, Qtd_banheiros, Preco)
+VALUES ('Standard', 30, 1, 1, 1, 1, 1, 100.00);
+
+INSERT INTO Tipos_quarto (Nome_tipo, Area, Qtd_camas, Qtd_TVs, Qtd_arCondicionados, Qtd_comodos, Qtd_banheiros, Preco)
+VALUES ('Deluxe', 50, 2, 2, 1, 2, 2, 200.00);
+
+INSERT INTO Tipos_quarto (Nome_tipo, Area, Qtd_camas, Qtd_TVs, Qtd_arCondicionados, Qtd_comodos, Qtd_banheiros, Preco)
+VALUES ('Suite', 70, 3, 3, 2, 3, 3, 300.00);
+
+SELECT * FROM Tipos_quarto;

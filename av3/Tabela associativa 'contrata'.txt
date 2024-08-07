@@ -1,0 +1,21 @@
+CREATE TABLE Contrata (
+    CPF_h INT,
+    Reserva_id INT,
+    Numero_quarto INT,
+    Servico_id INT,
+    FOREIGN KEY (CPF_h) REFERENCES Hospedes(CPF_p),
+    FOREIGN KEY (Reserva_id) REFERENCES Reserva(Reserva_id),
+    FOREIGN KEY (Numero_quarto) REFERENCES Quarto(Numero_quarto),
+    FOREIGN KEY (Servico_id) REFERENCES Servico_hospede(Servico_id)
+);
+
+INSERT INTO Contrata (CPF_h, Reserva_id, Numero_quarto, Servico_id)
+VALUES (444444444, 1, 103, 1);
+
+INSERT INTO Contrata (CPF_h, Reserva_id, Numero_quarto, Servico_id)
+VALUES (444444444, 1, 103, 2);
+
+INSERT INTO Contrata (CPF_h, Reserva_id, Numero_quarto, Servico_id)
+VALUES (555555555, 2, 102, 3);
+
+SELECT * FROM Contrata;

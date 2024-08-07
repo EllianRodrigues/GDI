@@ -1,0 +1,14 @@
+Telefone
+
+CREATE TABLE Telefone (
+    cpf_usuario int NOT NULL,
+    num_telefone int,
+    PRIMARY KEY (cpf_usuario, num_telefone),
+    FOREIGN KEY (cpf_usuario) REFERENCES Usuarios(CPF)
+);
+INSERT INTO Telefone (cpf_usuario, num_telefone) VALUES (123456789, 987654321);
+INSERT INTO Telefone (cpf_usuario, num_telefone) VALUES (123456789, 123456789);
+INSERT INTO Telefone (cpf_usuario, num_telefone) VALUES (987654321, 555555555);
+INSERT INTO Telefone (cpf_usuario, num_telefone) VALUES (111222333, 444444444);
+
+SELECT * FROM Telefone;

@@ -1,0 +1,13 @@
+-- Query Master
+
+SELECT * FROM Usuarios;
+SELECT * FROM Telefone;
+SELECT * FROM Cargos;
+SELECT * FROM Funcionarios;
+SELECT * FROM Hospedes;
+SELECT * FROM Visitas;
+SELECT * FROM Tipos_quarto;
+SELECT * FROM Quarto;
+SELECT * FROM Reserva;
+SELECT * FROM Servico_hospede;
+SELECT * FROM Contrata;

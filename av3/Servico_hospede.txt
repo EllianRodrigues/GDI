@@ -1,0 +1,17 @@
+CREATE TABLE Servico_hospede (
+    Servico_id INT PRIMARY KEY,
+    Descricao varchar(255),
+    Preco NUMERIC(10, 2)
+);
+
+
+INSERT INTO Servico_hospede (Servico_id, Descricao, Preco)
+VALUES (1, 'Serviço de Quarto', 50.00);
+
+INSERT INTO Servico_hospede (Servico_id, Descricao, Preco)
+VALUES (2, 'Lavanderia', 30.00);
+
+INSERT INTO Servico_hospede (Servico_id, Descricao, Preco)
+VALUES (3, 'SPA', 100.00);
+
+SELECT * FROM Servico_hospede;

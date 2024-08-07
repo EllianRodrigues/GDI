@@ -1,0 +1,21 @@
+CREATE TABLE Funcionarios (
+    CPF_p INT NOT NULL,
+    Cargo VARCHAR(255),
+    Data_contratacao DATE,
+    CPF_supervisor INT,
+    PRIMARY KEY (CPF_p),
+    FOREIGN KEY (CPF_p) REFERENCES Usuarios(CPF),
+    FOREIGN KEY (CPF_supervisor) REFERENCES Funcionarios(CPF_p),
+    FOREIGN KEY (Cargo) REFERENCES Cargos(Cargo_fun)
+);
+
+INSERT INTO Funcionarios (CPF_p, Cargo, Data_contratacao, CPF_supervisor)
+VALUES (111111111, 'Gerente', TO_DATE('01/01/2020', 'DD/MM/YYYY'), NULL);
+
+INSERT INTO Funcionarios (CPF_p, Cargo, Data_contratacao, CPF_supervisor)
+VALUES (222222222, 'Assistente', TO_DATE('01/02/2021', 'DD/MM/YYYY'), 111111111);
+
+INSERT INTO Funcionarios (CPF_p, Cargo, Data_contratacao, CPF_supervisor)
+VALUES (333333333, 'Analista', TO_DATE('01/03/2021', 'DD/MM/YYYY'), 111111111);
+
+SELECT * FROM Funcionarios;
