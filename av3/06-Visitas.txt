@@ -5,6 +5,7 @@ CREATE TABLE Visitas (
     Data_visita date,
     PRIMARY KEY (CPF_hospede, Data_visita),
     FOREIGN KEY (CPF_hospede) REFERENCES Hospedes(CPF_p)
+    CHECK (idade > 17)
 );
 INSERT INTO Visitas (CPF_hospede, idade, nome, Data_visita)
 VALUES (444444444, 30, 'Lucas Silva', TO_DATE('01/08/2024', 'DD/MM/YYYY'));
