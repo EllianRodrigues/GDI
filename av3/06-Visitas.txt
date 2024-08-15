@@ -1,9 +1,10 @@
 CREATE TABLE Visitas (
     CPF_hospede int NOT NULL,
+    CPF_visita int,
     idade int,
     nome varchar(255),
     Data_visita date,
-    PRIMARY KEY (CPF_hospede, Data_visita),
+    PRIMARY KEY (CPF_hospede, CPF_visita),
     FOREIGN KEY (CPF_hospede) REFERENCES Hospedes(CPF_p)
     CHECK (idade > 17)
 );
