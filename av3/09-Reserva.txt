@@ -1,3 +1,7 @@
+CREATE SEQUENCE reserva_seq
+    START WITH 1
+    INCREMENT BY 1;
+
 CREATE TABLE Reserva (
     Reserva_id INT PRIMARY KEY,
     CPF_h INT,
@@ -12,9 +16,9 @@ CREATE TABLE Reserva (
 );
 
 INSERT INTO Reserva (Reserva_id, CPF_h, Numero_quarto, Check_in, Check_out, Status, Informacoes_pagamento, Numero_hospedes)
-VALUES (1, 444444444, 103, TO_DATE('01/08/2024', 'DD/MM/YYYY'), TO_DATE('05/08/2024', 'DD/MM/YYYY'), 'Confirmada', 'Cartão de Crédito', 2);
+VALUES (reserva_seq.NEXTVAL, 444444444, 103, TO_DATE('01/08/2024', 'DD/MM/YYYY'), TO_DATE('05/08/2024', 'DD/MM/YYYY'), 'Confirmada', 'Cartão de Crédito', 2);
 
 INSERT INTO Reserva (Reserva_id, CPF_h, Numero_quarto, Check_in, Check_out, Status, Informacoes_pagamento, Numero_hospedes)
-VALUES (2, 555555555, 102, TO_DATE('01/08/2024', 'DD/MM/YYYY'), TO_DATE('03/08/2024', 'DD/MM/YYYY'), 'Confirmada', 'Boleto Bancário', 3);
+VALUES (reserva_seq.NEXTVAL, 555555555, 102, TO_DATE('01/08/2024', 'DD/MM/YYYY'), TO_DATE('03/08/2024', 'DD/MM/YYYY'), 'Confirmada', 'Boleto Bancário', 3);
 
 SELECT * FROM Reserva;
