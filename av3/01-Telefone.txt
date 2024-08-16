@@ -1,5 +1,3 @@
-Telefone
-
 CREATE TABLE Telefone (
     cpf_usuario int NOT NULL,
     num_telefone int,
