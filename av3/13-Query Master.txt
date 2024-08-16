@@ -11,3 +11,4 @@ SELECT * FROM Quarto;
 SELECT * FROM Reserva;
 SELECT * FROM Servico_hospede;
 SELECT * FROM Contrata;
+SELECT * FROM Tem;
