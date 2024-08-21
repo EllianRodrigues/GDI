@@ -1,0 +1,36 @@
+---- SELECT-FROM-WHERE ----- INNER JOIN ----- ORDER BY -------
+
+SELECT
+	u.nome,
+	u.email,
+	t.num_telefone,
+	e.bairro,
+	e.cidade
+FROM
+	Usuario u
+INNER JOIN
+	ENDERECO e ON u.cep = e.cep
+INNER JOIN
+	Telefone t ON u.cpf = t.cpf
+WHERE
+	e.cidade = 'São Paulo'
+ORDER BY
+	u.nome;
+
+-------- UPDATE ---------
+
+UPDATE 
+    Endereco e
+SET 
+    e.bairro = 'Botafogo'
+WHERE 
+    e.cep = (SELECT u.cep FROM Usuario u WHERE u.nome = 'João Silva');
+
+-------- DELETE -------
+
+DELETE FROM 
+    Telefone
+WHERE 
+    num_telefone = 123123123 AND cpf = (SELECT cpf FROM Usuario WHERE nome = 'Carlos Lima');
+
+-------- 
