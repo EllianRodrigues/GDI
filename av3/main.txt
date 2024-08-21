@@ -222,7 +222,7 @@ INSERT INTO Quarto (numero_quarto, nome_tipo, status, reservado)
 VALUES (102, 'Deluxe', 'Disponível', 'Não');
 
 INSERT INTO Quarto (numero_quarto, nome_tipo, status, reservado)
-VALUES (103, 'Suite', 'reservado', 'Sim');
+VALUES (103, 'Suite', 'Reservado', 'Sim');
 
 SELECT * FROM Quarto;
 
