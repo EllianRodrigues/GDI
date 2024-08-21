@@ -119,7 +119,7 @@ FROM
 WHERE 
     u.email LIKE '%@email.com';
 
-------- COUNT ---- GROUP BY -------- HAVING
+------- COUNT ---- GROUP BY -------- HAVING -- Operador >
 Conta o número de usuários por cidade, mostrando apenas cidades com mais de um usuário
 
 SELECT 
