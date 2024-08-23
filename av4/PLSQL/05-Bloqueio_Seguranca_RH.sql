@@ -3,7 +3,7 @@
 -- ✅ - EXCEPTION WHEN
 -- ✅ - CREATE OR REPLACE TRIGGER (COMANDO)
 CREATE OR REPLACE TRIGGER check_dia_da_semana
-BEFORE INSERT OR UPDATE OR DELETE
+BEFORE INSERT OR UPDATE OR DELETE ON Funcionario
 DECLARE
     -- Variáveis para armazenar a data/hora do comando e o dia da semana
     v_data_comando DATE;
