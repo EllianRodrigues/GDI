@@ -203,3 +203,9 @@ SELECT c.id_contrato AS Contrato_ID,
        DEREF(c.hospede).cpf AS CPF_Hospede,
        DEREF(c.quarto).numero_quarto AS Numero_Quarto
 FROM contrato c;
+
+--consultar usando apenas REF
+
+SELECT *
+FROM usuario u
+WHERE REF(u) = (SELECT REF(u) FROM usuario u WHERE u.cpf = '12345678901'); -- cpf selecionado
