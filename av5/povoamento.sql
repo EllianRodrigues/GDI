@@ -98,6 +98,53 @@ INSERT INTO hospede VALUES (
     DATE '1985-07-15'             
 );
 
+INSERT INTO usuario VALUES (
+    '12345678910',             
+    'João Silva',              
+    'joao.silva@email.com',    
+    tp_endereco('12345678', 'Brasil', 'RJ', 'Rio de Janeiro', 'Botafogo', 'Rua A'),
+    'Casa 101',                  
+    '1234',                      
+    tp_fones(tp_telefone('912345678')) 
+);
+
+INSERT INTO hospede VALUES (
+    '12345678910',                
+    'João Silva',                 
+    'joao.silva@email.com',       
+    tp_endereco('12345678', 'Brasil', 'RJ', 'Rio de Janeiro', 'Botafogo', 'Rua A'), 
+    'Casa 101',                   
+    '1234',                       
+    tp_fones(tp_telefone('912345678')), 
+    'Professor',                 
+    'M',                          
+    DATE '1980-05-20'             
+);
+
+INSERT INTO usuario VALUES (
+    '11223344556',                -- CPF
+    'Maria Oliveira',             -- Nome
+    'maria.oliveira@email.com',   -- Email
+    tp_endereco('87654321', 'Brasil', 'SP', 'São Paulo', 'Jardins', 'Rua B'), -- Endereço
+    'Apto 502',                   -- Complemento
+    '5678',                       -- Número
+    tp_fones(tp_telefone('911234567'))  -- Telefones
+);
+
+INSERT INTO hospede VALUES (
+    '11223344556',                
+    'Maria Oliveira',             
+    'maria.oliveira@email.com',   
+    tp_endereco('87654321', 'Brasil', 'SP', 'São Paulo', 'Jardins', 'Rua B'),
+    'Apto 502',                  
+    '5678',                      
+    tp_fones(tp_telefone('911234567')),
+    'Advogada',                   
+    'F',                          
+    DATE '1990-09-10'             
+);
+
+
 --CRIAR TABELA VISITA
 
 CREATE TABLE visita of tp_visita(
@@ -112,6 +159,39 @@ INSERT INTO visita VALUES (
     'Miguel',                   
     DATE '2024-09-04',            
     (SELECT REF(h) FROM hospede h WHERE h.cpf = '98765432100')  
+);
+
+INSERT INTO visita VALUES (
+    '83927394856',                
+    28,                           
+    'Lucas Santos',               
+    DATE '2024-09-05',            
+    (SELECT REF(h) FROM hospede h WHERE h.cpf = '98765432100')  
+);
+
+INSERT INTO visita VALUES (
+    '74839273845',                
+    32,                           
+    'Acsa',                
+    DATE '2024-09-06',            
+    (SELECT REF(h) FROM hospede h WHERE h.cpf = '98765432100')  
+);
+
+-- CRIAR VISITANTE DE JOAO SILVA
+INSERT INTO visita VALUES (
+    '93827465567',                
+    45,                           
+    'Pedro Gomes',                
+    DATE '2024-09-07',            
+    (SELECT REF(h) FROM hospede h WHERE h.cpf = '12345678910') 
+);
+
+INSERT INTO visita VALUES (
+    '98765432123',                
+    40,                           
+    'Fernanda Lima',              
+    DATE '2024-09-08',            
+    (SELECT REF(h) FROM hospede h WHERE h.cpf = '12345678910')
 );
 
 

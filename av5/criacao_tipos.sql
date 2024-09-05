@@ -86,11 +86,33 @@ CREATE OR REPLACE TYPE tp_tipo_quarto AS OBJECT (
 /
 
 CREATE OR REPLACE TYPE tp_quarto AS OBJECT (
-	tipo_quarto REF tp_tipo_quarto,
-	numero_quarto NUMBER,
-	status VARCHAR2(20),
-	reservado VARCHAR2(20)
+    tipo_quarto REF tp_tipo_quarto,
+    numero_quarto NUMBER,
+    status VARCHAR2(20),
+    reservado VARCHAR2(20),
+    MEMBER PROCEDURE ocupar_quarto,
+	MEMBER PROCEDURE descupar_quarto,
+    MEMBER FUNCTION esta_disponivel RETURN BOOLEAN
 );
+/
+
+-- Implementação dos Métodos
+CREATE OR REPLACE TYPE BODY tp_quarto AS
+    MEMBER PROCEDURE ocupar_quarto IS -- Atualiza o status para Ocupado
+    BEGIN
+        status := 'Ocupado';
+    END ocupar_quarto;
+
+	MEMBER PROCEDURE descupar_quarto IS -- Atualiza o status para Ocupado
+    BEGIN
+        status := 'Disponível';
+    END descupar_quarto;
+
+    MEMBER FUNCTION esta_disponivel RETURN BOOLEAN IS -- Retorna True se o quarto estiver disponível
+    BEGIN
+        RETURN status = 'Disponível';
+    END esta_disponivel;
+END;
 /
 
 CREATE OR REPLACE TYPE tp_contrato AS OBJECT(
