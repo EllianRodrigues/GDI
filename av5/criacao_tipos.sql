@@ -3,10 +3,11 @@ CREATE OR REPLACE TYPE tp_endereco AS OBJECT (
 	pais VARCHAR2(15),
 	estado VARCHAR2(15),
 	cidade VARCHAR2(100),
-	bairro VARCHAR2(100),
-	rua VARCHAR2(100)
+	bairro VARCHAR2(100)
 );
 /
+-- Alter type para adicionar Rua
+ALTER TYPE tp_endereco ADD ATTRIBUTE (rua VARCHAR2(100));
 
 CREATE OR REPLACE TYPE tp_telefone AS OBJECT (
     numero VARCHAR(9)
