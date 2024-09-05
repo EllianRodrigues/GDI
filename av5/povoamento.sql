@@ -54,13 +54,17 @@ INSERT INTO funcionario VALUES (
 
 --usuario que é funcionario e supervisionado por Maria 
 INSERT INTO usuario VALUES (
-    '98765432101',                
-    'João Pedro',                 
-    'joao.pedro@email.com',        
+    '98765432101',
+    'João Pedro',
+    'joao.pedro@email.com',
     tp_endereco('87654321', 'Brasil', 'RJ', 'Rio de Janeiro', 'Centro', 'Rua B'), 
-    'Apto 202',                   
-    '5678',                       
-    tp_fones(tp_telefone('912345678'))
+    'Apto 202',
+    '5678',
+    tp_fones(
+        tp_telefone('912345678'), 
+        tp_telefone('912345679'), 
+        tp_telefone('912345680')
+    )
 );
 SELECT ROWID, nome, email FROM usuario;
 

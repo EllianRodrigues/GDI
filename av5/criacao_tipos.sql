@@ -25,8 +25,8 @@ CREATE OR REPLACE TYPE tp_usuario AS OBJECT (
 	complemento VARCHAR2(100),
 	numero VARCHAR2(7),
 	telefone tp_fones,
-	MEMBER PROCEDURE exibir_dados
-	-- FINAL MAP MEMBER FUNCTION count_telefones RETURN NUMBER
+	MEMBER PROCEDURE exibir_dados,
+	FINAL MAP MEMBER FUNCTION count_telefones RETURN NUMBER
 ) NOT FINAL;
 /
 
@@ -37,14 +37,14 @@ CREATE OR REPLACE TYPE BODY tp_usuario AS
         DBMS_OUTPUT.PUT_LINE('Usuário: ' || nome);
     END exibir_dados;
 
-    -- MAP MEMBER FUNCTION count_telefones RETURN NUMBER IS
-    -- BEGIN
-    --     IF telefone IS NULL THEN
-    --         RETURN 0;
-    --     ELSE
-    --         RETURN telefone.COUNT;
-    --     END IF;
-    -- END count_telefones;
+    FINAL MAP MEMBER FUNCTION count_telefones RETURN NUMBER IS
+	BEGIN
+		IF telefone IS NULL THEN
+			RETURN 0;
+		ELSE
+			RETURN telefone.COUNT;
+		END IF;
+	END count_telefones;
 END;
 /
 
