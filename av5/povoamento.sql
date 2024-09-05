@@ -335,7 +335,10 @@ INSERT INTO reserva VALUES(
 -- criar tabela de contrato
 
 CREATE TABLE contrato of tp_contrato(
-    PRIMARY KEY(id_contrato)
+    PRIMARY KEY(id_contrato),
+    SCOPE FOR (reserva) IS reserva,  
+    SCOPE FOR (hospede) IS hospede,   
+    SCOPE FOR (quarto) IS quarto 
 );
 
 -- povoar contrato 
