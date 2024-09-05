@@ -204,6 +204,7 @@ SELECT c.id_contrato AS Contrato_ID,
        DEREF(c.quarto).numero_quarto AS Numero_Quarto
 FROM contrato c;
 
+
 --consultar usando apenas REF
 
 SELECT *
@@ -219,4 +220,4 @@ FROM
     usuario u,
     TABLE(u.telefone) t
 WHERE 
-    u.cpf = '12345678901'; -- cpf que deseja ver
+    u.cpf = '12345678901' -- cpf que deseja ver
