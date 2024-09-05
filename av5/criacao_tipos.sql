@@ -94,6 +94,7 @@ CREATE OR REPLACE TYPE tp_quarto AS OBJECT (
 /
 
 CREATE OR REPLACE TYPE tp_contrato AS OBJECT(
+	id_contrato VARCHAR2(100),
 	reserva REF tp_reserva,
 	hospede REF tp_hospede,
 	quarto REF tp_quarto
@@ -101,15 +102,16 @@ CREATE OR REPLACE TYPE tp_contrato AS OBJECT(
 /
 
 CREATE OR REPLACE TYPE tp_servico_hospede AS OBJECT(
-	servido_id VARCHAR2(100),
+	servico_id VARCHAR2(100),
 	descricao VARCHAR2(100),
 	preco NUMBER
 );
 /
 
 CREATE OR REPLACE TYPE tp_tem AS OBJECT(
+	id_tem VARCHAR2(100),
 	contrato REF tp_contrato,
-	servico REF tp_contrato,
+	servico REF tp_servico_hospede,
 	data_de_contratacao DATE
 );
 /
