@@ -36,6 +36,8 @@ INSERT INTO usuario VALUES (
     '1234', 
     tp_fones(tp_telefone('987654321'))
 );
+SELECT ROWID, nome, email FROM usuario;
+
 
 INSERT INTO funcionario VALUES (
     '12345678901', 
@@ -60,6 +62,8 @@ INSERT INTO usuario VALUES (
     '5678',                       
     tp_fones(tp_telefone('912345678'))
 );
+SELECT ROWID, nome, email FROM usuario;
+
 
 INSERT INTO funcionario VALUES (
     '98765432101',                
@@ -84,6 +88,7 @@ INSERT INTO usuario VALUES (
     '9012',                     
     tp_fones(tp_telefone('923456789'))
 );
+SELECT ROWID, nome, email FROM usuario;
 
 INSERT INTO hospede VALUES (
     '98765432100',                
@@ -107,6 +112,7 @@ INSERT INTO usuario VALUES (
     '1234',                      
     tp_fones(tp_telefone('912345678')) 
 );
+SELECT ROWID, nome, email FROM usuario;
 
 INSERT INTO hospede VALUES (
     '12345678910',                
@@ -130,6 +136,7 @@ INSERT INTO usuario VALUES (
     '5678',                       -- Número
     tp_fones(tp_telefone('911234567'))  -- Telefones
 );
+SELECT ROWID, nome, email FROM usuario;
 
 INSERT INTO hospede VALUES (
     '11223344556',                

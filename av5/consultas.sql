@@ -44,7 +44,6 @@ BEGIN
 END;
 /
 
-
 -- Retorna todos os visitantes
 SELECT v.cpf_visita AS CPF_Visitante,
        v.nome AS Nome_Visitante,

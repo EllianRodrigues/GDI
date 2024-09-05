@@ -30,6 +30,7 @@ CREATE OR REPLACE TYPE tp_usuario AS OBJECT (
 ) NOT FINAL;
 /
 
+
 CREATE OR REPLACE TYPE BODY tp_usuario AS
     MEMBER PROCEDURE exibir_dados IS
     BEGIN
@@ -181,6 +182,7 @@ CREATE OR REPLACE TYPE tp_servico_hospede AS OBJECT(
 	preco NUMBER
 );
 /
+
 
 CREATE OR REPLACE TYPE tp_tem AS OBJECT(
 	id_tem VARCHAR2(100),
