@@ -209,3 +209,14 @@ FROM contrato c;
 SELECT *
 FROM usuario u
 WHERE REF(u) = (SELECT REF(u) FROM usuario u WHERE u.cpf = '12345678901'); -- cpf selecionado
+
+
+-- Expandindo a VARRAY para consultar todos os números de telefone de um usuário
+SELECT 
+    u.cpf,
+    t.numero AS telefone_numero
+FROM 
+    usuario u,
+    TABLE(u.telefone) t
+WHERE 
+    u.cpf = '12345678901'; -- cpf que deseja ver
