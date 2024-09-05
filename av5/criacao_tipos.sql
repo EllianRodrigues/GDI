@@ -23,8 +23,27 @@ CREATE OR REPLACE TYPE tp_usuario AS OBJECT (
 	endereco tp_endereco,
 	complemento VARCHAR2(100),
 	numero VARCHAR2(7),
-	telefone tp_fones
+	telefone tp_fones,
+	MEMBER PROCEDURE exibir_dados
+	-- FINAL MAP MEMBER FUNCTION count_telefones RETURN NUMBER
 ) NOT FINAL;
+/
+
+CREATE OR REPLACE TYPE BODY tp_usuario AS
+    MEMBER PROCEDURE exibir_dados IS
+    BEGIN
+        DBMS_OUTPUT.PUT_LINE('Usuário: ' || nome);
+    END exibir_dados;
+
+    -- MAP MEMBER FUNCTION count_telefones RETURN NUMBER IS
+    -- BEGIN
+    --     IF telefone IS NULL THEN
+    --         RETURN 0;
+    --     ELSE
+    --         RETURN telefone.COUNT;
+    --     END IF;
+    -- END count_telefones;
+END;
 /
 
 CREATE OR REPLACE TYPE tp_cargo AS OBJECT (
@@ -43,8 +62,19 @@ CREATE OR REPLACE TYPE tp_funcionario UNDER tp_usuario (
 CREATE OR REPLACE TYPE tp_hospede UNDER tp_usuario (
 	profissao VARCHAR2(30),
 	genero VARCHAR2(1),
-	data_de_nascimento DATE
+	data_de_nascimento DATE,
+	OVERRIDING MEMBER PROCEDURE exibir_dados
 );
+/
+
+CREATE OR REPLACE TYPE BODY tp_hospede AS
+    overriding MEMBER PROCEDURE exibir_dados IS
+    BEGIN
+        -- Chama o método base
+		--SELF.exibir_dados;
+        DBMS_OUTPUT.PUT_LINE('Profissão: ' || profissao);
+    END exibir_dados;
+END;
 /
 
 CREATE OR REPLACE TYPE tp_visita AS OBJECT (
@@ -81,8 +111,17 @@ CREATE OR REPLACE TYPE tp_tipo_quarto AS OBJECT (
 	qtd_arcondicionados NUMBER,
 	qtd_comodos NUMBER,
 	qtd_banheiros NUMBER,
-	preco NUMBER
+	preco NUMBER,
+	MAP MEMBER FUNCTION preco_por_cama RETURN NUMBER
 );
+/
+
+CREATE OR REPLACE TYPE BODY tp_tipo_quarto AS
+	MAP MEMBER FUNCTION preco_por_cama RETURN NUMBER IS
+	BEGIN
+		RETURN preco / qtd_camas;
+	END;
+END;
 /
 
 CREATE OR REPLACE TYPE tp_quarto AS OBJECT (
@@ -92,7 +131,8 @@ CREATE OR REPLACE TYPE tp_quarto AS OBJECT (
     reservado VARCHAR2(20),
     MEMBER PROCEDURE ocupar_quarto,
 	MEMBER PROCEDURE descupar_quarto,
-    MEMBER FUNCTION esta_disponivel RETURN BOOLEAN
+    MEMBER FUNCTION esta_disponivel RETURN BOOLEAN,
+	ORDER MEMBER FUNCTION compare_quartos (q tp_quarto) RETURN INTEGER
 );
 /
 
@@ -112,6 +152,17 @@ CREATE OR REPLACE TYPE BODY tp_quarto AS
     BEGIN
         RETURN status = 'Disponível';
     END esta_disponivel;
+
+	ORDER MEMBER FUNCTION compare_quartos (q tp_quarto) RETURN INTEGER IS
+    BEGIN
+        IF SELF.numero_quarto < q.numero_quarto THEN
+            RETURN -1;
+        ELSIF SELF.numero_quarto > q.numero_quarto THEN
+            RETURN 1;
+        ELSE
+            RETURN 0;
+        END IF;
+    END compare_quartos;
 END;
 /
 

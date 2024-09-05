@@ -7,6 +7,44 @@ SELECT
     t.data_de_contratacao
 FROM tem t;
 
+--TESTAR O RESULTADO DO OVERRIDE FEITO EM HOSPEDE
+DECLARE
+    v_hospede tp_hospede;
+BEGIN
+    SELECT VALUE(t)
+    INTO v_hospede
+    FROM hospede t
+    WHERE t.cpf = '98765432100';
+
+    -- Chama o método exibir_dados
+    v_hospede.exibir_dados;
+END;
+/
+
+--TESTE DE VALOR POR CAMA DO TIPO DE QUARTO (FUNÇÃO MAP)
+DECLARE
+    v_tipo_quarto tp_tipo_quarto;
+	v_preco_geral NUMBER;
+    v_preco_por_cama NUMBER;
+	v_qtd_camas NUMBER;
+BEGIN
+    SELECT VALUE(t)
+    INTO v_tipo_quarto
+    FROM tipo_quarto t
+    WHERE t.nome_tipo = 'Familiar';
+
+	v_preco_geral := v_tipo_quarto.preco;
+	v_qtd_camas := v_tipo_quarto.qtd_camas;
+    v_preco_por_cama := v_tipo_quarto.preco_por_cama;
+
+    -- Exibir o resultado
+	DBMS_OUTPUT.PUT_LINE('Preço padrão: ' || v_preco_geral);
+	DBMS_OUTPUT.PUT_LINE('Quantidade de camas: ' || v_qtd_camas);
+    DBMS_OUTPUT.PUT_LINE('Preço por cama: ' || v_preco_por_cama);
+END;
+/
+
+
 -- Retorna todos os visitantes
 SELECT v.cpf_visita AS CPF_Visitante,
        v.nome AS Nome_Visitante,
@@ -17,7 +55,7 @@ SELECT v.cpf_visita AS CPF_Visitante,
        DEREF(v.hospede_visitado).email AS Email_Hospede
 FROM visita v;
 
--- Testa os procedures e funções de quarto
+-- Testa os procedures e funções de QUARTO
 DECLARE
     v_quarto tp_quarto;
     v_disponivel BOOLEAN;
@@ -62,6 +100,17 @@ BEGIN
     COMMIT;
 END;
 /
+
+-- TESTE DE FUNÇÃO DE ORDENAÇÃO DE QUARTOS
+SELECT q1.numero_quarto AS Quarto1,
+       q2.numero_quarto AS Quarto2,
+       CASE 
+           WHEN q1.compare_quartos(VALUE(q2)) = -1 THEN 'Quarto1 < Quarto2'
+           WHEN q1.compare_quartos(VALUE(q2)) = 1 THEN 'Quarto1 > Quarto2'
+           ELSE 'Quarto1 = Quarto2'
+       END AS Comparacao
+FROM quarto q1, quarto q2
+WHERE q1.numero_quarto <> q2.numero_quarto;
 
 -- Retorna todos os quartos
 SELECT 
