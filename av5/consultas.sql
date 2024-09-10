@@ -1,11 +1,4 @@
---consultar tem 
 
-SELECT 
-    t.id_tem,
-    DEREF(t.contrato).id_contrato AS contrato_id,
-    DEREF(t.servico).servico_id AS servico_id,
-    t.data_de_contratacao
-FROM tem t;
 
 -- Retorna todos os visitantes
 SELECT v.cpf_visita AS CPF_Visitante,
@@ -68,3 +61,14 @@ SELECT c.id_contrato AS Contrato_ID,
        DEREF(c.hospede).cpf AS CPF_Hospede,
        DEREF(c.quarto).numero_quarto AS Numero_Quarto
 FROM contrato c;
+
+--consultar nasted tables tem 
+
+SELECT
+    t.id_tem,
+    s.servico_id,
+    s.descricao,
+    s.preco
+FROM 
+    tem t,
+    TABLE(t.servico) s;

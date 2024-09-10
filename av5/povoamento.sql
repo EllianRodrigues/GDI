@@ -354,14 +354,10 @@ INSERT INTO contrato VALUES (
     (SELECT REF(q) FROM quarto q WHERE q.numero_quarto = 102)
 );
 
---criar tabela de serviço de hospede e tem
+--criar tabela de serviço de hospede
 
 CREATE TABLE servico of tp_servico_hospede(
     PRIMARY KEY (servico_id)
-);
-
-CREATE TABLE tem of tp_tem(
-    PRIMARY KEY (id_tem)
 );
 
 -- povoar tabela de serviço
@@ -392,10 +388,18 @@ INSERT INTO servico VALUES(
 
 -- povoar tem 
 
+
+CREATE TABLE tem OF tp_tem (
+    PRIMARY KEY (id_tem)
+)NESTED TABLE servico STORE AS servicos_tem_tab;
+
 INSERT INTO tem VALUES(
     'T001',
-    (SELECT REF(c) FROM contrato c WHERE c.id_contrato = 'C002'), 
-    (SELECT REF(s) FROM servico s WHERE s.servico_id = 'S004'), 
+    (SELECT REF(c) FROM contrato c WHERE c.id_contrato = 'C002'),
+    tp_lista_servico_hospede(
+        (SELECT VALUE(s) FROM servico s WHERE s.servico_id = 'S001'),
+        (SELECT VALUE(s) FROM servico s WHERE s.servico_id = 'S003')
+    ), 
     DATE '2024-09-12'   
 );
 

@@ -168,6 +168,16 @@ CREATE OR REPLACE TYPE BODY tp_quarto AS
 END;
 /
 
+CREATE OR REPLACE TYPE tp_servico_hospede AS OBJECT(
+	servico_id VARCHAR2(100),
+	descricao VARCHAR2(100),
+	preco NUMBER
+);
+/
+
+CREATE OR REPLACE TYPE tp_lista_servico_hospede AS TABLE OF tp_servico_hospede;
+/
+
 CREATE OR REPLACE TYPE tp_contrato AS OBJECT(
 	id_contrato VARCHAR2(100),
 	reserva REF tp_reserva,
@@ -176,18 +186,10 @@ CREATE OR REPLACE TYPE tp_contrato AS OBJECT(
 );
 /
 
-CREATE OR REPLACE TYPE tp_servico_hospede AS OBJECT(
-	servico_id VARCHAR2(100),
-	descricao VARCHAR2(100),
-	preco NUMBER
-);
-/
-
-
 CREATE OR REPLACE TYPE tp_tem AS OBJECT(
 	id_tem VARCHAR2(100),
 	contrato REF tp_contrato,
-	servico REF tp_servico_hospede,
+	servico tp_lista_servico_hospede,
 	data_de_contratacao DATE
 );
 /

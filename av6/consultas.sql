@@ -135,13 +135,6 @@ SELECT c.id_contrato AS Contrato_ID,
        DEREF(c.quarto).numero_quarto AS Numero_Quarto
 FROM contrato c;
 
-SELECT 
-    t.id_tem,
-    DEREF(t.contrato).id_contrato AS contrato_id,
-    DEREF(t.servico).servico_id AS servico_id,
-    t.data_de_contratacao
-FROM tem t;
-
 -- Retorna todos os visitantes
 SELECT v.cpf_visita AS CPF_Visitante,
        v.nome AS Nome_Visitante,
@@ -198,18 +191,19 @@ SELECT r.reserva_id AS Reserva_ID,
 FROM reserva r;
 
 -- Retorna todos os contratos
-SELECT c.id_contrato AS Contrato_ID,
-       DEREF(c.reserva).reserva_id AS Reserva_ID,
-       DEREF(c.hospede).cpf AS CPF_Hospede,
-       DEREF(c.quarto).numero_quarto AS Numero_Quarto
-FROM contrato c;
+SELECT 
+    c.id_contrato AS Contrato_ID,
+    DEREF(c.reserva).reserva_id AS Reserva_ID,
+    DEREF(c.hospede).cpf AS CPF_Hospede,
+    DEREF(c.quarto).numero_quarto AS Numero_Quarto
+FROM 
+    contrato c;
 
 
---consultar usando apenas REF
-
+-- REF para consultar
 SELECT *
 FROM usuario u
-WHERE REF(u) = (SELECT REF(u) FROM usuario u WHERE u.cpf = '12345678901'); -- cpf selecionado
+WHERE REF(u) = (SELECT REF(u) FROM usuario u WHERE u.cpf = '12345678901');
 
 
 -- Expandindo a VARRAY para consultar todos os números de telefone de um usuário
@@ -220,4 +214,16 @@ FROM
     usuario u,
     TABLE(u.telefone) t
 WHERE 
-    u.cpf = '12345678901' -- cpf que deseja ver
+    u.cpf = '12345678901';
+
+
+--consultar nasted tables tem 
+
+SELECT
+    t.id_tem,
+    s.servico_id,
+    s.descricao,
+    s.preco
+FROM 
+    tem t,
+    TABLE(t.servico) s;
